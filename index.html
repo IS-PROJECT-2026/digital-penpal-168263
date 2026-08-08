@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Dove &mdash; Correspondence, carried</title>
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts: Cormorant Garamond (brand/display), Inter (UI), Dancing Script / Special Elite (letter fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void: '#0B0E1B',
+          surface: '#141A2E',
+          surface2: '#1B2340',
+          line: '#2A3158',
+          indigo: {
+            accent: '#6C7CF7'
+          },
+          ink: '#E7E9F7',
+          muted: '#8D93B8',
+          gold: '#D8A94E',
+          ruby: '#C4456B',
+          bronze: '#B08B57'
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          ui: ['Inter', 'sans-serif'],
+          cursive: ['"Dancing Script"', 'cursive'],
+          typewriter: ['"Special Elite"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-void text-ink font-ui antialiased min-h-screen">
+
+  <!-- ============ IDENTITY GATE MODAL ============ -->
+  <div id="identity-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-void">
+    <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle at 1px 1px, #6C7CF7 1px, transparent 0); background-size: 24px 24px;"></div>
+    <div class="relative w-full max-w-md mx-4 bg-surface border border-line rounded-2xl p-8 shadow-2xl">
+      <div class="flex items-center gap-2 mb-1 text-indigo-accent">
+        <span class="text-2xl leading-none">&#128330;</span>
+        <span class="uppercase tracking-[0.2em] text-[11px] text-muted font-ui">Digital Dove</span>
+      </div>
+      <h1 class="font-display text-3xl text-ink mb-2">Before the first letter flies</h1>
+      <p class="text-sm text-muted mb-6 leading-relaxed">Every dove needs a name to carry. Choose the handle your pen pals will come to know; this becomes your signature across the network.</p>
+      <label for="identity-handle" class="text-black block text-xs uppercase tracking-wider text-muted mb-5">NOTE: This name is permanent</label>
+      <form id="identity-form" class="space-y-4">
+        <div>
+          <label for="identity-handle" class="block text-xs uppercase tracking-wider text-muted mb-1.5">Pen Name Handle</label>
+          <input id="identity-handle" type="text" autocomplete="off" placeholder="e.g. River_Kestrel"
+            class="w-full bg-surface2 border border-line rounded-lg px-4 py-3 text-ink placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-indigo-accent focus:border-transparent" />
+          <p id="identity-error" class="text-ruby text-xs mt-1.5 hidden">A handle is required to begin corresponding.</p>
+        </div>
+        <button type="submit" class="w-full bg-indigo-accent hover:bg-indigo-accent/90 text-white font-medium py-3 rounded-lg transition-colors">
+          Begin Correspondence
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ APP SHELL ============ -->
+  <div id="app-shell" class="hidden min-h-screen lg:flex">
+
+    <!-- SIDEBAR -->
+    <aside class="lg:w-72 shrink-0 bg-surface border-b lg:border-b-0 lg:border-r border-line flex flex-col">
+      <div class="px-6 py-6 border-b border-line">
+        <div class="flex items-center gap-2 text-indigo-accent">
+          <span class="text-2xl leading-none">&#128330;</span>
+          <span class="font-display text-2xl text-ink">Digital Dove</span>
+        </div>
+        <p class="text-[11px] uppercase tracking-[0.2em] text-muted mt-1">Correspondence Console</p>
+      </div>
+
+      <nav class="p-3 space-y-1" id="viewport-nav">
+        <button data-viewport="writing" class="nav-btn nav-btn-active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors">
+          <span class="text-lg">&#9998;&#65039;</span> The Writing Console
+        </button>
+        <button data-viewport="mailroom" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors">
+          <span class="text-lg">&#128235;</span> The Mailroom
+          <span id="mailroom-count" class="ml-auto text-xs bg-surface2 text-muted px-2 py-0.5 rounded-full">0</span>
+        </button>
+        <button data-viewport="archive" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors">
+          <span class="text-lg">&#128229;</span> The Archive Inbox
+          <span id="archive-count" class="ml-auto text-xs bg-surface2 text-muted px-2 py-0.5 rounded-full">0</span>
+        </button>
+      </nav>
+
+      <div class="px-4 pt-2 pb-4 flex-1 overflow-y-auto">
+        <p class="px-2 text-[11px] uppercase tracking-[0.2em] text-muted mb-2">Discover Pen Pals</p>
+        <div id="penpal-directory" class="space-y-1.5"></div>
+      </div>
+
+      <div class="px-6 py-4 border-t border-line flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-indigo-accent/20 border border-indigo-accent/40 flex items-center justify-center text-indigo-accent font-display text-lg">
+          <span id="user-initial">?</span>
+        </div>
+        <div class="min-w-0">
+          <p class="text-sm text-ink truncate" id="user-handle-display">&mdash;</p>
+          <p class="text-[11px] text-muted">Active session</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="flex-1 min-w-0">
+
+      <!-- VIEWPORT A: WRITING CONSOLE -->
+      <section id="viewport-writing" class="viewport p-6 lg:p-10 max-w-4xl mx-auto">
+        <header class="mb-8">
+          <p class="text-[11px] uppercase tracking-[0.2em] text-indigo-accent mb-1">Viewport A</p>
+          <h2 class="font-display text-3xl text-ink">The Writing Console</h2>
+          <p class="text-sm text-muted mt-1">Choose your paper, your hand, your seal &mdash; then send it into transit.</p>
+        </header>
+
+        <form id="letter-form" class="space-y-6">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-muted mb-1.5">Recipient</label>
+              <input id="recipient-input" type="text" placeholder="Aiko_Tokyo, or anyone you like"
+                class="w-full bg-surface border border-line rounded-lg px-4 py-2.5 text-ink placeholder:text-muted/40 focus:outline-none focus:ring-2 focus:ring-indigo-accent" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-muted mb-1.5">Distance</label>
+              <select id="distance-select" class="w-full bg-surface border border-line rounded-lg px-4 py-2.5 text-ink focus:outline-none focus:ring-2 focus:ring-indigo-accent">
+                <option value="local">Local &mdash; arrives in 1 minute</option>
+                <option value="regional">Regional &mdash; arrives in 5 minutes</option>
+                <option value="global">Global &mdash; arrives in 10 minutes</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Stationery Picker -->
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-muted mb-2">Stationery Style</label>
+            <div id="stationery-picker" class="grid grid-cols-3 gap-3">
+              <button type="button" data-stationery="vintage" class="picker-swatch stationery-vintage rounded-lg border-2 border-line h-16 relative overflow-hidden" title="Vintage"></button>
+              <button type="button" data-stationery="scroll" class="picker-swatch stationery-scroll rounded-lg border-2 border-line h-16 relative overflow-hidden" title="Scroll"></button>
+              <button type="button" data-stationery="minimal" class="picker-swatch stationery-minimal rounded-lg border-2 border-line h-16 relative overflow-hidden" title="Minimal"></button>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <!-- Font Picker -->
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-muted mb-2">Font Style</label>
+              <div id="font-picker" class="flex gap-2">
+                <button type="button" data-font="cursive" class="font-option font-cursive flex-1 bg-surface border-2 border-line rounded-lg py-2.5 text-ink">Cursive</button>
+                <button type="button" data-font="typewriter" class="font-option font-typewriter flex-1 bg-surface border-2 border-line rounded-lg py-2.5 text-ink text-sm">Typewriter</button>
+                <button type="button" data-font="modern" class="font-option flex-1 bg-surface border-2 border-line rounded-lg py-2.5 text-ink text-sm font-medium">Modern</button>
+              </div>
+            </div>
+
+            <!-- Wax Seal Picker -->
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-muted mb-2">Wax Seal</label>
+              <div id="seal-picker" class="flex gap-3">
+                <button type="button" data-seal="gold-dove" class="seal-option w-11 h-11 rounded-full seal-gold-dove border-2 border-transparent flex items-center justify-center text-lg" title="Gold Dove">&#128330;</button>
+                <button type="button" data-seal="ruby-heart" class="seal-option w-11 h-11 rounded-full seal-ruby-heart border-2 border-transparent flex items-center justify-center text-lg" title="Ruby Heart">&#10084;&#65039;</button>
+                <button type="button" data-seal="bronze-anchor" class="seal-option w-11 h-11 rounded-full seal-bronze-anchor border-2 border-transparent flex items-center justify-center text-lg" title="Bronze Anchor">&#9875;&#65039;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Textarea styled as paper -->
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-muted mb-1.5">Your Letter</label>
+            <div id="paper-container" class="stationery-vintage rounded-lg border border-line p-1 transition-colors">
+              <textarea id="content-textarea" rows="8" placeholder="Dear friend..."
+                class="font-cursive w-full bg-transparent resize-none px-5 py-4 focus:outline-none placeholder:opacity-50 text-lg leading-relaxed"></textarea>
+            </div>
+            <p id="content-error" class="text-ruby text-xs mt-1.5 hidden">A letter cannot be sealed empty.</p>
+          </div>
+
+          <div class="flex items-center gap-4 pt-2">
+            <button type="submit" id="seal-send-btn" class="relative overflow-hidden bg-indigo-accent hover:bg-indigo-accent/90 text-white font-medium px-6 py-3 rounded-lg transition-colors">
+              Seal &amp; Send
+            </button>
+            <span id="send-confirmation" class="text-sm text-gold opacity-0 transition-opacity">Sealed and sent into transit.</span>
+          </div>
+        </form>
+
+        <!-- Message in a Bottle fallback -->
+        <div id="bottle-panel" class="hidden mt-6 bg-surface border border-line rounded-xl p-5">
+          <p class="text-sm text-ink mb-1">&#127991;&#65039; That name isn't in the directory yet.</p>
+          <p class="text-xs text-muted mb-3">Cast it as a message in a bottle instead &mdash; a stranger from somewhere far will write back in one minute.</p>
+          <button id="bottle-btn" type="button" class="text-sm bg-surface2 hover:bg-line text-ink px-4 py-2 rounded-lg border border-line transition-colors">
+            Cast Message in a Bottle
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEWPORT B: MAILROOM -->
+      <section id="viewport-mailroom" class="viewport hidden p-6 lg:p-10 max-w-6xl mx-auto">
+        <header class="mb-8">
+          <p class="text-[11px] uppercase tracking-[0.2em] text-indigo-accent mb-1">Viewport B</p>
+          <h2 class="font-display text-3xl text-ink">The Mailroom</h2>
+          <p class="text-sm text-muted mt-1">Letters currently in transit, counting down to arrival.</p>
+        </header>
+        <div id="mailroom-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+        <div id="mailroom-empty" class="hidden text-center py-16 text-muted">
+          <p class="text-4xl mb-3">&#128330;</p>
+          <p class="text-sm">No letters in flight. The skies are quiet.</p>
+        </div>
+      </section>
+
+      <!-- VIEWPORT C: ARCHIVE INBOX -->
+      <section id="viewport-archive" class="viewport hidden p-6 lg:p-10 max-w-6xl mx-auto">
+        <header class="mb-8">
+          <p class="text-[11px] uppercase tracking-[0.2em] text-indigo-accent mb-1">Viewport C</p>
+          <h2 class="font-display text-3xl text-ink">The Archive Inbox</h2>
+          <p class="text-sm text-muted mt-1">Delivered letters, waiting for their seal to be broken.</p>
+        </header>
+        <div id="archive-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+        <div id="archive-empty" class="hidden text-center py-16 text-muted">
+          <p class="text-4xl mb-3">&#128229;</p>
+          <p class="text-sm">Nothing has arrived yet. Send a letter to begin.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ LETTER READING MODAL ============ -->
+  <div id="letter-modal" class="hidden fixed inset-0 z-40 items-center justify-center bg-void/80 backdrop-blur-sm p-4">
+    <div class="relative w-full max-w-lg">
+      <button id="letter-modal-close" class="absolute -top-10 right-0 text-muted hover:text-ink text-sm">Close &#10005;</button>
+      <div id="letter-modal-paper" class="stationery-vintage rounded-lg shadow-2xl p-8 max-h-[80vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-6 text-sm text-black/50">
+          <span id="letter-modal-from"></span>
+          <span id="letter-modal-meta"></span>
+        </div>
+        <p id="letter-modal-content" class="font-cursive text-lg leading-relaxed whitespace-pre-wrap"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/delivery.js"></script>
+</body>
+</html>
