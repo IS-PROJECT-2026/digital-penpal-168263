@@ -50,7 +50,11 @@
     <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle at 1px 1px, #6C7CF7 1px, transparent 0); background-size: 24px 24px;"></div>
     <div class="relative w-full max-w-md mx-4 bg-surface border border-line rounded-2xl p-8 shadow-2xl">
       <div class="flex items-center gap-2 mb-1 text-indigo-accent">
-        <span class="text-2xl leading-none">&#128330;</span>
+        <!-- <span class="text-2xl leading-none">&#128330;</span> -->
+         <span class="text-2xl leading-none inline-flex items-center">
+  <img src="assets/bird.jpeg" class="h-[2em] w-auto object-contain" alt="Bird icon">
+</span>
+
         <span class="uppercase tracking-[0.2em] text-[11px] text-muted font-ui">Digital Dove</span>
       </div>
       <h1 class="font-display text-3xl text-ink mb-2">Before the first letter flies</h1>
@@ -85,14 +89,23 @@
 
       <nav class="p-3 space-y-1" id="viewport-nav">
         <button data-viewport="writing" class="nav-btn nav-btn-active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors">
-          <span class="text-lg">&#9998;&#65039;</span> The Writing Console
+          <!-- <span class="text-lg">&#9998;&#65039;</span> The Writing Console -->
+             <span class="text-2xl leading-none inline-flex items-center">
+  <img src="assets/pen.jpeg" class="h-[2em] w-auto object-contain" alt="Bird icon">
+</span> The Writing Console
         </button>
         <button data-viewport="mailroom" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors">
-          <span class="text-lg">&#128235;</span> The Mailroom
+          <!-- <span class="text-lg">&#128235;</span> The Mailroom -->
+           <span class="text-2xl leading-none inline-flex items-center">
+  <img src="assets/mailbox.jpeg" class="h-[2em] w-auto object-contain" alt="Bird icon">
+</span> The Mailroom
           <span id="mailroom-count" class="ml-auto text-xs bg-surface2 text-muted px-2 py-0.5 rounded-full">0</span>
         </button>
         <button data-viewport="archive" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors">
-          <span class="text-lg">&#128229;</span> The Archive Inbox
+          <!-- <span class="text-lg">&#128229;</span> The Archive Inbox -->
+           <span class="text-2xl leading-none inline-flex items-center">
+  <img src="assets/inbox.jpeg" class="h-[2em] w-auto object-contain" alt="Bird icon">
+</span> The Archive Inbox
           <span id="archive-count" class="ml-auto text-xs bg-surface2 text-muted px-2 py-0.5 rounded-full">0</span>
         </button>
       </nav>
@@ -121,7 +134,7 @@
         <header class="mb-8">
           <p class="text-[11px] uppercase tracking-[0.2em] text-indigo-accent mb-1">Viewport A</p>
           <h2 class="font-display text-3xl text-ink">The Writing Console</h2>
-          <p class="text-sm text-muted mt-1">Choose your paper, your hand, your seal &mdash; then send it into transit.</p>
+          <p class="text-sm text-muted mt-1">Choose your paper, your hand, your seal, then send it into transit.</p>
         </header>
 
         <form id="letter-form" class="space-y-6">
