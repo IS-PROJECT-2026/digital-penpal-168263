@@ -2,15 +2,15 @@
 
 ## 1. Student Details
 
-- **Full Name:** [Your Name Here]
-- **GitHub Username:** [Your Username Here]
-- **Email:** [Your Student Email Here]
+- **Full Name:** [Malcom Wachira]
+- **GitHub Username:** [MalcomWachira]
+- **Email:** [malcom.wachira@strathmore.edu]
 
 ---
 
 ## 2. Deployed Portfolio Link
 
-- **Live GitHub Pages URL:** [Paste your live deployment link here]
+- **Live GitHub Pages URL:** [https://is-project-2026.github.io/digital-penpal-168263/]
   *(Example: https://is-project-2026.github.io/hospital-management-138141/)*
 
 ---
@@ -19,14 +19,14 @@
 
 List at least **four key concepts or skills** you learned during the Git crash course. For each one, write a brief explanation of how it helped you manage your portfolio project more effectively.
 
-* **Concept 1: [Name of Concept]**
-  * *How it helped me:* [Your brief explanation here]
-* **Concept 2: [Name of Concept]**
-  * *How it helped me:* [Your brief explanation here]
-* **Concept 3: [Name of Concept]**
-  * *How it helped me:* [Your brief explanation here]
-* **Concept 4: [Name of Concept]**
-  * *How it helped me:* [Your brief explanation here]
+* **Concept 1: [Creating branches based on issues]**
+  * *How it helped me:* [Creating structured branch names like `feat/3-graphics` kept my experimental development isolated, preventing broken code from ruining my primary project timeline.]
+* **Concept 2: [Merge Conflict Resolution]**
+  * *How it helped me:* [Learned and practised how to resolve merge conflicts directly from VS Code and the GitHub web interface]
+* **Concept 3: [Commits with Descriptive Messages]**
+  * *How it helped me:* [Learned how to properly structure my commit messages to convey what was changed]
+* **Concept 4: [Protecting the main branch]**
+  * *How it helped me:* [I learned how to set branch protection rules to protect the main branch from directly pushing code to it]
 
 ---
 
