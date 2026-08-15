@@ -24,7 +24,7 @@ List at least **four key concepts or skills** you learned during the Git crash c
 * **Concept 2: [Merge Conflict Resolution]**
   * *How it helped me:* [Learned and practised how to resolve merge conflicts directly from VS Code and the GitHub web interface]
 * **Concept 3: [Commits with Descriptive Messages]**
-  * *How it helped me:* [Learned how to properly structure my commit messages to convey what was changed]
+  * *How it helped me:* [Learned how to structure my commit messages to convey what was changed properly]
 * **Concept 4: [Protecting the main branch]**
   * *How it helped me:* [I learned how to set branch protection rules to protect the main branch from directly pushing code to it]
 
@@ -39,30 +39,30 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 ### A. Milestones and Issues
 *Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
 
-[PASTE YOUR MILESTONE SCREENSHOT DIRECTLY HERE]
+[<img width="1572" height="566" alt="image" src="https://github.com/user-attachments/assets/46c16892-a88a-441c-a20a-c7ec331334cf" />]
 
-* **Caption:** [Write a brief sentence describing your milestones here]
+* **Caption:** [The current active milestone is for editing the submission.md file; the other ones have already been closed.]
 
 ### B. Project Board
 *Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
 
-[PASTE YOUR PROJECT BOARD SCREENSHOT DIRECTLY HERE]
+[<img width="1849" height="859" alt="image" src="https://github.com/user-attachments/assets/7bb67006-7bd8-47c3-a895-25e5f5501bad" />]
 
-* **Caption:** [Write a brief sentence describing your board state here]
+* **Caption:** [The edit submission.md issue is currently in progress while the rest of the issues have been finished and closed.]
 
 ### C. Branching Architecture
 *Provide a screenshot showing your local or remote Git branch list, highlighting your use of conventional, issue-linked naming patterns (e.g., `feat/`, `fix/`, `style/`).*
 
-[PASTE YOUR BRANCHING SCREENSHOT DIRECTLY HERE]
+[<img width="747" height="355" alt="image" src="https://github.com/user-attachments/assets/93b562a5-d07a-45c4-88fb-85c1e51725c2" />]
 
-* **Caption:** [Write a brief sentence describing your branch list here]
+* **Caption:** [I used feat and docs naming conventions for creating new files and updating some documentation. I plan on using fix and style to fix some logical issues and add some more styling.]
 
 ### D. Pull Requests & Traceability
 *Provide a screenshot of a completed or open Pull Request (PR) on GitHub that clearly shows it is linked to a related development issue.*
 
-[PASTE YOUR PULL REQUEST SCREENSHOT DIRECTLY HERE]
+[<img width="1713" height="908" alt="image" src="https://github.com/user-attachments/assets/bb5643c4-378c-4ba1-96b0-b1dfc3f8bbea" />]
 
-* **Caption:** [Write a brief sentence describing your PR and what issue it closes]
+* **Caption:** [The pull request for adding CSS styling to the web app closes the issue for adding styling to the app]
 
 ---
 
@@ -73,23 +73,26 @@ To demonstrate your ability to handle git collisions and protect production code
 ### Step 1: Generating the Clash
 *Provide a screenshot showing the moment you attempted to merge two conflicting branches modifying the same line of code.*
 
-[PASTE SCREENSHOT OF ATTEMPTED MERGE / TERMINAL WARNING HERE]
+[<img width="801" height="114" alt="Screenshot 2026-08-15 121259" src="https://github.com/user-attachments/assets/ec69698d-f05b-47d1-b7e0-141afe458a6e" />
+]
 
-* **Caption:** [Describe which two branches collided and the conflict warning received]
+* **Caption:** [The branches that collided were feat/3-graphics and feat/4-delivery mechanism; the error that was shown was 'Automatic merge failed; fix conflicts and then commit the result'.]
 
 ### Step 2: Inside the Code Editor (Native Conflict Markers)
 *Provide your visual evidence showing the raw, unresolved conflict markers (`<<<<<<< HEAD`, `=======`, and `>>>>>>>`) inside your local code editor.*
 
-[PASTE SCREENSHOT OF RAW VS CODE CONFLICT MARKERS HERE]
+[<img width="1116" height="973" alt="Screenshot 2026-08-15 112515" src="https://github.com/user-attachments/assets/e5979935-f63f-4baa-8360-e4d439ae468a" />
+]
 
-* **Caption:** [Explain what line of code caused the dispute and your technical reasoning for choosing the final version]
+* **Caption:** [Line 1 of merge.txt coming from separate development environments; I chose to keep both changes so as not to leave out a particular change since they were both relevant.]
 
 ### Step 3: Resolution & Clean Merge Log
 *Provide a screenshot of your clean Git history, network graph, or a successfully completed pull request showing that the conflict was resolved safely, committed, and merged cleanly into the main branch.*
 
-[PASTE SCREENSHOT OF CLEAN UNIFIED HISTORICAL GRAPH HERE]
+[<img width="374" height="459" alt="image" src="https://github.com/user-attachments/assets/61fae570-2cb0-4359-8a9f-0b996f3bcb70" />
+]
 
-* **Caption:** [Describe the final state of the unified file on the main branch]
+* **Caption:** [The unified file in the main branch has both changes that I made from the different branches]
 
 ---
 
