@@ -116,7 +116,7 @@ To help improve this course for future engineering cohorts, please take 2 minute
 Paste the URL of the commit in your history that you think best demonstrates clean conventional commit practice (good type tag, clear subject, meaningful body or footer).
 
 - **Commit URL:** [https://github.com/IS-PROJECT-2026/digital-penpal-168263/commit/6b6e6e308b43f2945b031d9248392d72fd1e0325]
-- **Why this one?** [This commit is for adding new graphics assets to the project. It has a feature type tag and indicates that it focuses on graphics. It has a clear subject which is to add new image assets , and the body describes the kind of assets that have been added.]
+- **Why this one?** [This commit is for adding new graphics assets to the project. It has a feature type tag and indicates that it focuses on graphics. It has a clear subject, which is to add new image assets, and the body describes the kind of assets that have been added.]
 
 ### B. A Mistake or Struggle
 
@@ -141,41 +141,6 @@ If you had to restart this project from scratch with everything you know now, na
 
 ---
 
-## 4. Screenshots of Key GitHub Features
-
-Demonstrate your workflow mechanics by embedding your screenshots below.
-
-> **CRITICAL FOR WORKING IMAGES:** Do not type manual folder paths. Edit this file directly on the GitHub web interface, click on the blank line below each prompt, and **paste (Ctrl+V / Cmd+V)** your screenshot. GitHub will automatically upload the file and generate a permanent, working image link for you.
-
-### A. Milestones and Issues
-*Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
-
-[PASTE YOUR MILESTONE SCREENSHOT DIRECTLY HERE]
-
-* **Caption:** [Write a brief sentence describing your milestones here]
-
-### B. Project Board
-*Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
-
-[PASTE YOUR PROJECT BOARD SCREENSHOT DIRECTLY HERE]
-
-* **Caption:** [Write a brief sentence describing your board state here]
-
-### C. Branching Architecture
-*Provide a screenshot showing your local or remote Git branch list, highlighting your use of conventional, issue-linked naming patterns (e.g., `feat/`, `fix/`, `style/`).*
-
-[PASTE YOUR BRANCHING SCREENSHOT DIRECTLY HERE]
-
-* **Caption:** [Write a brief sentence describing your branch list here]
-
-### D. Pull Requests & Traceability
-*Provide a screenshot of a completed or open Pull Request (PR) on GitHub that clearly shows it is linked to a related development issue.*
-
-[PASTE YOUR PULL REQUEST SCREENSHOT DIRECTLY HERE]
-
-* **Caption:** [Write a brief sentence describing your PR and what issue it closes]
-
----
 
 ## 5. Merge Conflict Evidence
 
@@ -214,25 +179,27 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 ### Conflict 2 — Different Cause
 
-**What cause did you use?** [Name the type of conflict cause — must be different from Conflict 1]
+**What cause did you use?** [Modify/Delete conflict, where I modified a file in one branch then deleted it in another]
 
-**Why does this cause trigger a conflict?** [1–2 sentences explaining the mechanism]
+**Why does this cause trigger a conflict?** [Git does now know whether to keep the file with the changes made or to delete it, causing a conflict]
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 2 HERE]
+[<img width="1436" height="975" alt="image" src="https://github.com/user-attachments/assets/06175ab3-3565-469a-a21b-0b5a73c1c2f3" />
+]
 
-* **Caption:** [Brief description of the conflicting branches and file]
+* **Caption:** [I used an existing merge.txt file, where I edited it in branch feat/4-delivery-mechanism, then deleted the same file in branch feat/3-graphics.]
 
 ---
 
 ### Conflict 3 — Different Cause
 
-**What cause did you use?** [Name the type of conflict cause — must be different from Conflicts 1 and 2]
+**What cause did you use?** [Renaming the same file to different names in different branches]
 
-**Why does this cause trigger a conflict?** [1–2 sentences explaining the mechanism]
+**Why does this cause trigger a conflict?** [Git does not know which file name to continue with so it lets you choose and manually select the one you want]
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 3 HERE]
+[<img width="1757" height="1045" alt="image" src="https://github.com/user-attachments/assets/93a9e8d0-990e-40cf-9888-23653800d96f" />
+]
 
-* **Caption:** [Brief description of the conflicting branches and file]
+* **Caption:** [The conflicting branches are feat/3-graphics and feat/4-delivery-mechanism, and the files are merges.txt and merging.txt. In feat/3, i changes merge.txt to merging.txt and added some new content in the file, whereas in feat/4, I changed merge.txt to merges.txt and removed some of the existing content in the file.]
 
 ---
 ##
